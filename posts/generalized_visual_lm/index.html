@@ -248,7 +248,7 @@
 <p>将视觉信息融合到语言模型中的一种直接方法是将图像视为普通的文本token，并在文本和图像的联合表示序列上训练模型。准确地说，图像被分成许多小块(patch)，每个小块被视为输入序列中的一个token。</p>
 <p><strong>VisualBERT</strong><a href="https://arxiv.org/abs/1908.03557">(Li et al. 2019)</a>将文本输入和图像区域都输入到<a href="https://lilianweng.github.io/posts/2019-01-31-lm/#bert">BERT</a>中，这样它就能够通过自注意力发现图像和文本之间的内部对齐。</p>
 
-<img loading="lazy" src="VisualBERT-arch.png"/>
+<img src="VisualBERT-arch.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 1. VisualBERT is trained on the combination of both text and image embeddings. (Image source: <a href="https://arxiv.org/abs/1908.03557" target="_blank">Li et al. 2019</a>)</figcaption>
 
 
