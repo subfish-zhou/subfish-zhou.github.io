@@ -10,14 +10,14 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://subfish-zhou.github.io/series/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://subfish-zhou.github.io/series/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【翻译】一般视觉语言模型</title>
-      <link>https://subfish-zhou.github.io/posts/generalized_visual_lm/</link>
-      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      <title>【笔记】深入扩散模型教程</title>
+      <link>https://subfish-zhou.github.io/posts/diffusion/diffusion/</link>
+      <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://subfish-zhou.github.io/posts/generalized_visual_lm/</guid>
-      <description>综述</description>
+      <guid>https://subfish-zhou.github.io/posts/diffusion/diffusion/</guid>
+      <description>我希望这是全网最好的扩散模型理论入门教程，代码实践见下期</description>
     </item>
     
   </channel>

@@ -20,5 +20,14 @@
       <description>一个新课题</description>
     </item>
     
+    <item>
+      <title>深度学习时代的自动定理证明简介</title>
+      <link>https://subfish-zhou.github.io/posts/dlatp/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://subfish-zhou.github.io/posts/dlatp/</guid>
+      <description>科普</description>
+    </item>
+    
   </channel>
 </rss>
