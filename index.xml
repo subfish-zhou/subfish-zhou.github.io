@@ -9,24 +9,49 @@
       <link>https://subfish-zhou.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 15 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://subfish-zhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://subfish-zhou.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【笔记】深入扩散模型教程</title>
+      <title>My Profile</title>
+      <link>https://subfish-zhou.github.io/posts/myprofile/</link>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://subfish-zhou.github.io/posts/myprofile/</guid>
+      <description>Who is Subfish</description>
+    </item>
+    
+    <item>
+      <title>【Note】Diffusion</title>
       <link>https://subfish-zhou.github.io/posts/diffusion/diffusion/</link>
       <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://subfish-zhou.github.io/posts/diffusion/diffusion/</guid>
-      <description>我希望这是全网最好的扩散模型理论入门教程，代码实践见下期</description>
+      <description>Diffusion 本文是Google发布的Understanding Diffusion Models: A Unified Perspective一文的笔记。
+生成模型简介 给定我们关注的数据分布中的观测样本$x$，生成模型的目标是学习真实的数据分布$p(x)$。这样之后就可以从近似模型任意生成新的样本，以及使用近似模型来评估样本数据的概率。
+目前有几个较重要的方向，下面简要概括：
+生成对抗网络(GANs)模拟了一个复杂分布的抽样过程，它是通过对抗的方式学习的。 “基于似然的模型”，将高似然概率分配给观测样本。这包括自回归模型、正规流（normalizing flows）和变分自编码器(VAE)。 基于能量的模型，分布被学习为任意可变的能量函数，然后被归一化。 基于分数的模型，与能量模型很相关：它将基于能量的模型的分数作为神经网络来学习。 本文介绍扩散模型，它有基于似然和基于分数的解释。会非常数学，不过这些推导很细节，做好准备！
+背景：ELBO，VAE和分层VAE 证据下界（Evidence Lower Bound） 对于很多模式中的数据，可以看作是由未知的隐变量$z$产生出的。把隐变量$z$和数据$x$建模成联合概率分布$p(x,z)$。基于似然的模型最大化所有观测$x$的可能性$p(x)$，可以用两种方法操纵联合分布排除隐变量$z$来恢复$p(x)$： $$p(x)=\int p(x,z)dz\tag{1}$$
+$$p(x)=\frac{p(x,z)}{p(z|x)}\tag{2}$$
+直接计算以及最大化似然函数$p(x)$是困难的，因为积分和条件概率的计算都比较难。我们用一个近似的变分分布$q_{\phi}(z|x)$来估计后验概率$p(z|x)$，然后去优化最大似然的对数（这里被称为证据Evidence）：
+$$ \begin{aligned} \log p(\pmb{x}) &amp;amp;=\log p(\pmb{x}) \int q_{\phi}(\pmb{z} | \pmb{x}) d z \ &amp;amp;=\int q_{\pmb{\phi}}(\pmb{z} | \pmb{x})(\log p(\pmb{x})) d z \ &amp;amp;=\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}[\log p(\pmb{x})] \ &amp;amp;=\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{p(\pmb{x}, \pmb{z})}{p(\pmb{z} | \pmb{x})}\right] \ &amp;amp;=\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{p(\pmb{x}, \pmb{z}) q_{\phi}(\pmb{z} | \pmb{x})}{p(\pmb{z} | \pmb{x}) q_{\phi}(\pmb{z} | \pmb{x})}\right] \ &amp;amp;=\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{p(\pmb{x}, \pmb{z})}{q_{\pmb{\phi}}(\pmb{z} | \pmb{x})}\right]+\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{q_{\phi}(\pmb{z} | \pmb{x})}{p(\pmb{z} | \pmb{x})}\right] \ &amp;amp;=\mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{p(\pmb{x}, \pmb{z})}{q_{\pmb{\phi}}(\pmb{z} | \pmb{x})}\right]+D_{\mathrm{KL}}\left(q_{\phi}(\pmb{z} | \pmb{x}) | p(\pmb{z} | \pmb{x})\right) \ &amp;amp; \geq \mathbb{E}{q{\phi}(\pmb{z} | \pmb{x})}\left[\log \frac{p(\pmb{x}, \pmb{z})}{q_{\phi}(\pmb{z} | \pmb{x})}\right] \end{aligned} $$</description>
     </item>
     
     <item>
-      <title>【翻译】一般视觉语言模型</title>
+      <title>【Translate】General Visual Language Model</title>
       <link>https://subfish-zhou.github.io/posts/generalized_visual_lm/</link>
       <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://subfish-zhou.github.io/posts/generalized_visual_lm/</guid>
-      <description>综述</description>
+      <description>summary</description>
+    </item>
+    
+    <item>
+      <title>Introduction of Deep Learning for Automatic Theorem Proving</title>
+      <link>https://subfish-zhou.github.io/posts/dlatp/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://subfish-zhou.github.io/posts/dlatp/</guid>
+      <description>DL4ATP</description>
     </item>
     
     <item>
@@ -36,15 +61,6 @@
       
       <guid>https://subfish-zhou.github.io/posts/autoformalization/</guid>
       <description>一个新课题</description>
-    </item>
-    
-    <item>
-      <title>深度学习时代的自动定理证明简介</title>
-      <link>https://subfish-zhou.github.io/posts/dlatp/</link>
-      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://subfish-zhou.github.io/posts/dlatp/</guid>
-      <description>科普</description>
     </item>
     
     
