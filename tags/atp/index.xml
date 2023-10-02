@@ -12,6 +12,15 @@
     <language>en</language>
     <lastBuildDate>Sun, 20 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://subfish-zhou.github.io/tags/atp/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Automatic formalization of mathematics: a path to automatic reasoning</title>
+      <link>https://subfish-zhou.github.io/posts/autoformalization/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://subfish-zhou.github.io/posts/autoformalization/</guid>
+      <description>new subject</description>
+    </item>
+    
+    <item>
       <title>Introduction of Deep Learning for Automatic Theorem Proving</title>
       <link>https://subfish-zhou.github.io/posts/dlatp/</link>
       <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
