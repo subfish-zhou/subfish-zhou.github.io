@@ -1,344 +1,422 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Ziyu Zhou - AI for Mathematics Researcher @ MSRA"><title>Ziyu Zhou | ~/</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/_astro/index@_@astro.qBhD8d8b.css"></head> <body> <!-- Top Bar --> <div class="top-bar"> <div class="left"> <span class="session">ziyu@research</span> <span style="color: var(--text-muted);"> : </span> <span class="path" id="top-path">~/</span> </div> <div class="right"> <span class="clock" id="clock"></span> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">◐</button> </div> </div> <!-- Main App --> <div class="app" id="app"> <!-- Left: Terminal --> <div class="terminal-panel" id="terminal-panel"> <div class="terminal-body" id="terminal-body"> <div id="output"></div> </div> <div class="input-line" id="input-line" style="display:none;"> <span class="t-prompt">visitor@ziyu:~$</span> <input id="cmd" type="text" autofocus autocomplete="off" spellcheck="false"> </div> </div> <!-- Divider --> <div class="divider"></div> <!-- Right: Content --> <div class="content-panel" id="content-panel"> <div class="content-empty" id="content-empty"> <div class="ascii-art">
+____  _                  ____  _                 
+  |_  / (_) _  _  _  _     |_  / | |_   ___  _  _  
+   / /  | || || || || | _    / /  | ' \ / _ \| || | 
+  /___| |_| \_, | \_,_|(_) /___| |_||_|\___/ \_,_| 
+             |__/
+</div> <div class="hint">
+Type a command in the terminal to explore<br>
+Try: <span>about</span> · <span>research</span> · <span>blog</span> · <span>help</span> </div> </div> <div class="content-view" id="content-view" style="display:none;"></div> </div> </div> <!-- Mobile Toggle --> <div class="mobile-toggle" id="mobile-toggle"> <button class="active" data-panel="terminal">⌨ Terminal</button> <button data-panel="content">📄 Content</button> </div> <!-- ============================================================ --> <!-- All page content as hidden templates --> <!-- ============================================================ --> <template id="tpl-about"> <div class="close-btn"> <span class="breadcrumb">~/about/README.md</span> <button onclick="closePanel()">✕ close</button> </div> <h1 class="page-title">About Me</h1> <p class="page-subtitle">cat ~/about/README.md</p> <div class="about-header"> <div class="avatar">🐟</div> <div class="info"> <h2>周子喻 (Ziyu Zhou)</h2> <p class="role">Research Intern @ Microsoft Research Asia</p> <p>I study <strong>AI for Mathematics</strong> — exploring how large language models can assist and automate formal mathematical reasoning and theorem proving.</p> </div> </div> <h2 class="section-heading">## Education</h2> <div class="card"> <h3>🎓 MSc in Artificial Intelligence</h3> <p>Czech Technical University in Prague · 2023 — 2025</p> </div> <div class="card"> <h3>🎓 BSc in Mathematics</h3> <p>University of Science and Technology Beijing (USTB) · 2018 — 2022</p> </div> <h2 class="section-heading">## Experience</h2> <div class="card"> <h3>🔬 Research Intern — Microsoft Research Asia</h3> <p>Sep 2025 — Present · AI for Formal Mathematics, Theorem Proving</p> </div> <div class="card"> <h3>💻 Developer — CETC 15th Research Institute</h3> <p>2021 — 2022</p> </div> <h2 class="section-heading">## Talks</h2> <div class="card"> <h3>🎤 "用大语言模型自动生成数学证明"</h3> <p>Swarma Club · October 2023 · <a href="https://swarma.org/?p=46207" target="_blank">Link →</a></p> </div> <div class="card"> <h3>🎤 Host: "AI+形式化数学" Panel</h3> <p>Swarma Club · March 2025 · <a href="https://swarma.org/?p=57591" target="_blank">Link →</a></p> </div> <div class="content-footer"> <p>© 2025 周子喻 (Ziyu Zhou) · Built with Astro</p> </div> </template> <template id="tpl-research"> <div class="close-btn"> <span class="breadcrumb">~/research/</span> <button onclick="closePanel()">✕ close</button> </div> <h1 class="page-title">Research</h1> <p class="page-subtitle">ls ~/research/</p> <div class="research-grid"> <div class="card research-card"> <div class="icon">🧮</div> <h3>AI for Formal Mathematics</h3> <p>Leveraging large language models to assist mathematicians in formalizing and verifying proofs in systems like Lean 4. Bridging the gap between informal mathematical reasoning and machine-verifiable proofs.</p> <div class="tags"><span class="tag">Lean 4</span><span class="tag">LLM</span><span class="tag">Proof Assistants</span></div> </div> <div class="card research-card"> <div class="icon">🔍</div> <h3>Automatic Theorem Proving</h3> <p>Developing neural approaches to automate the search for mathematical proofs. Combining deep learning with symbolic reasoning to tackle open problems in automated deduction.</p> <div class="tags"><span class="tag">Deep Learning</span><span class="tag">ATP</span><span class="tag">Proof Search</span></div> </div> <div class="card research-card"> <div class="icon">🔄</div> <h3>Autoformalization</h3> <p>Translating informal mathematical text (papers, textbooks) into formal specifications automatically. A key step toward machine-readable mathematics at scale.</p> <div class="tags"><span class="tag">NLP</span><span class="tag">Translation</span><span class="tag">Formalization</span></div> </div> <div class="card research-card"> <div class="icon">🧩</div> <h3>Neural SAT Solving</h3> <p>Applying neural networks to Boolean satisfiability problems, exploring architecture choices, training paradigms, and interpretability of learned solving strategies.</p> <div class="tags"><span class="tag">SAT</span><span class="tag">GNN</span><span class="tag">Combinatorics</span></div> </div> </div> <div class="content-footer"> <p>© 2025 周子喻 (Ziyu Zhou) · Built with Astro</p> </div> </template> <template id="tpl-publications"> <div class="close-btn"> <span class="breadcrumb">~/publications/list.bib</span> <button onclick="closePanel()">✕ close</button> </div> <h1 class="page-title">Publications</h1> <p class="page-subtitle">cat ~/publications/list.bib</p> <div class="card"> <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem;"> <div> <h3>Neural Approaches to SAT Solving: Design Choices and Interpretability</h3> <p style="margin-top:0.25rem;">April 2025</p> </div> </div> <p style="margin-top:0.75rem; line-height:1.6;">A comprehensive study examining how neural network architectures can be applied to Boolean satisfiability (SAT) problems. We analyze key design decisions — including graph representations, message-passing mechanisms, and training strategies — and provide interpretability insights into what these networks learn about SAT structure.</p> <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.6rem; align-items:center;"> <a href="https://www.sciencedirect.com/science/article/pii/S0888613X25002506" target="_blank" class="tag" style="text-decoration:none; background:var(--accent); color:var(--bg); border-color:var(--accent);">📄 Paper (ScienceDirect)</a> <a href="https://arxiv.org/abs/2504.01173" target="_blank" class="tag" style="text-decoration:none;">arXiv:2504.01173</a> </div> <div class="tags"> <span class="tag">SAT Solving</span><span class="tag">GNN</span><span class="tag">Interpretability</span><span class="tag">Deep Learning</span> </div> </div> <div class="card"> <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem;"> <div> <h3>LLMs Can Learn Theorem Libraries Through Dialogue to Become Effective Autoformalizers</h3> <p style="margin-top:0.25rem;">2025 · AITP 2025</p> </div> </div> <p style="margin-top:0.75rem; line-height:1.6;">We leverage large language models to summarize theorem library files into auxiliary prompts for the autoformalization task. Under a pass@5 budget, our approach achieves 100% syntactic accuracy on the MiniF2F-test. The main advantage is enabling low-cost and timely adaptation to the latest theorem libraries, a capability difficult to achieve with traditional fine-tuning-based methods.</p> <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.6rem; align-items:center;"> <a href="https://aitp-conference.org/2025/abstract/AITP_2025_paper_35.pdf" target="_blank" class="tag" style="text-decoration:none; background:var(--accent); color:var(--bg); border-color:var(--accent);">📄 Paper (PDF)</a> <a href="https://aitp-conference.org/2025/" target="_blank" class="tag" style="text-decoration:none;">AITP 2025</a> </div> <div class="tags"> <span class="tag">Autoformalization</span><span class="tag">LLM</span><span class="tag">Lean 4</span><span class="tag">MiniF2F</span> </div> </div> <div style="text-align:center; color:var(--text-muted); padding:2rem; font-family:var(--font-mono); font-size:0.85rem;"> <p>More publications coming soon...</p> <p style="margin-top:0.5rem;">// TODO: keep publishing</p> </div> <div class="content-footer"> <p>© 2025 周子喻 (Ziyu Zhou) · Built with Astro</p> </div> </template> <template id="tpl-projects"> <div class="close-btn"> <span class="breadcrumb">~/projects/</span> <button onclick="closePanel()">✕ close</button> </div> <h1 class="page-title">Projects</h1> <p class="page-subtitle">ls ~/projects/</p> <div class="card"> <div style="font-size:1.5rem; margin-bottom:0.5rem;">📐</div> <h3>Lean 4 Chinese Translations</h3> <p style="line-height:1.6;">Major contributor to Chinese translations of core Lean 4 community tutorials: Theorem Proving in Lean 4, Mathematics in Lean 4, and Metaprogramming in Lean 4. Making formal mathematics accessible to Chinese-speaking developers and mathematicians.</p> <div style="margin-top:0.75rem; display:flex; flex-wrap:wrap; gap:0.75rem;"> <a href="https://www.leanprover.cn/" target="_blank" style="font-family:var(--font-mono); font-size:0.85rem;">leanprover.cn →</a> <a href="https://leanprover.github.io/theorem_proving_in_lean4/" target="_blank" style="font-family:var(--font-mono); font-size:0.85rem;">TPIL4 →</a> <a href="https://leanprover-community.github.io/mathematics_in_lean/" target="_blank" style="font-family:var(--font-mono); font-size:0.85rem;">MIL →</a> </div> <div class="tags"><span class="tag">Lean 4</span><span class="tag">Translation</span><span class="tag">Community</span></div> </div> <div class="card"> <div style="font-size:1.5rem; margin-bottom:0.5rem;">✍️</div> <h3>Zhihu AI4Math Blog</h3> <p style="line-height:1.6;">1700+ followers on Zhihu. Authored the earliest Chinese-language introduction to AI for Formal Theorem Proving (2023). Writing monthly research paper roundups and technical deep-dives on AI for mathematics.</p> <div style="margin-top:0.75rem;"> <a href="https://zhihu.com/people/6.626E-34" target="_blank" style="font-family:var(--font-mono); font-size:0.85rem;">Zhihu Profile →</a> </div> <div class="tags"><span class="tag">Writing</span><span class="tag">AI4Math</span><span class="tag">Chinese</span></div> </div> <div class="card"> <div style="font-size:1.5rem; margin-bottom:0.5rem;">📖</div> <h3>FormalBook</h3> <p style="line-height:1.6;">Contributor to FormalBook — a community project formalizing proofs from Aigner &amp; Ziegler's "Proofs from THE BOOK" in Lean 4. Turning elegant mathematical proofs into machine-verified formal statements.</p> <div style="margin-top:0.75rem;"> <a href="https://github.com/mo271/FormalBook" target="_blank" style="font-family:var(--font-mono); font-size:0.85rem;">GitHub →</a> </div> <div class="tags"><span class="tag">Lean 4</span><span class="tag">Formalization</span><span class="tag">Community</span></div> </div> <div class="content-footer"> <p>© 2025 周子喻 (Ziyu Zhou) · Built with Astro</p> </div> </template> <template id="tpl-blog"> <div class="close-btn"> <span class="breadcrumb">~/blog/</span> <button onclick="closePanel()">✕ close</button> </div> <h1 class="page-title">Blog</h1> <p class="page-subtitle">ls ~/blog/ -lt</p> <div class="card" style="padding:2rem; text-align:center; color:var(--text-muted);"> <p style="font-size:1.1rem;">📝 New posts coming soon...</p> <p style="font-size:0.9rem; margin-top:0.5rem;">Stay tuned for research notes and technical deep-dives on AI for Mathematics.</p> </div> <div class="content-footer"> <p>© 2025 周子喻 (Ziyu Zhou) · Built with Astro</p> </div> </template> <!-- ============================================================ --> <!-- Main Script --> <!-- ============================================================ --> <script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const output = $('output');
+  const cmdInput = $('cmd');
+  const termBody = $('terminal-body');
+  const contentView = $('content-view');
+  const contentEmpty = $('content-empty');
+  const inputLine = $('input-line');
+  const topPath = $('top-path');
+  const clock = $('clock');
 
-<head>
-	<meta name="generator" content="Hugo 0.118.2"><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Subfish&#39;s Blog</title>
+  let currentPath = '~/';
+  let commandHistory = [];
+  let historyIdx = -1;
+  let navStack = []; // track parent views for back button
 
-<meta name="description" content="My personal page">
-<meta name="author" content="Subfish-zhou">
-<link rel="canonical" href="https://subfish-zhou.github.io/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.48a18943c2fc15c38a372b8dde1f5e5dc0bc64fa6cb90f5a817d2f8c76b7f3ae.css" integrity="sha256-SKGJQ8L8FcOKNyuN3h9eXcC8ZPpsuQ9agX0vjHa3864=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://subfish-zhou.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://subfish-zhou.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://subfish-zhou.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://subfish-zhou.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://subfish-zhou.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://subfish-zhou.github.io/index.xml">
-<link rel="alternate" type="application/json" href="https://subfish-zhou.github.io/index.json">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:title" content="Subfish&#39;s Blog" />
-<meta property="og:description" content="My personal page" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://subfish-zhou.github.io/" /><meta property="og:image" content="https://subfish-zhou.github.io/papermod-cover.png"/>
-
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://subfish-zhou.github.io/papermod-cover.png"/>
-
-<meta name="twitter:title" content="Subfish&#39;s Blog"/>
-<meta name="twitter:description" content="My personal page"/>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Subfish's Blog",
-  "url": "https://subfish-zhou.github.io/",
-  "description": "My personal page",
-  "thumbnailUrl": "https://subfish-zhou.github.io/favicon.ico",
-  "sameAs": [
-      "https://github.com/subfish-zhou/", "mailto:subfishzhou@gmail.com"
-  ]
-}
-</script>
-</head>
-
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://subfish-zhou.github.io/" accesskey="h" title="Subfish&#39;s Blog (Alt + H)">Subfish&#39;s Blog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </span>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://subfish-zhou.github.io/archives" title="Archive">
-                    <span>Archive</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://subfish-zhou.github.io/categories/" title="Categories">
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://subfish-zhou.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://subfish-zhou.github.io/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>Subfish&rsquo;s Blog</h1>
-    </header>
-    <section class="entry-content">
-        <p>Welcome to Subfish&rsquo;s homepage!</p>
-    </section>
-    <footer class="entry-footer">
-        <div class="social-icons">
-    <a href="https://github.com/subfish-zhou/" target="_blank" rel="noopener noreferrer me" title="Github">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg>
-    </a>
-    <a href="mailto:subfishzhou@gmail.com" target="_blank" rel="noopener noreferrer me" title="Email">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-    <polyline points="22,6 12,13 2,6"></polyline>
-</svg>
-    </a>
-</div>
-
-    </footer>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>My Profile
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Who is Subfish</p>
-  </section>
-  <footer class="entry-footer"><span title='2023-10-01 00:00:00 +0000 UTC'>October 1, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Subfish</footer>
-  <a class="entry-link" aria-label="post link to My Profile" href="https://subfish-zhou.github.io/posts/myprofile/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>【Note】Diffusion
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>summary</p>
-  </section>
-  <footer class="entry-footer"><span title='2023-04-15 00:00:00 +0000 UTC'>April 15, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Subfish</footer>
-  <a class="entry-link" aria-label="post link to 【Note】Diffusion" href="https://subfish-zhou.github.io/posts/diffusion/diffusion/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>【Translate】General Visual Language Model
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>summary</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-06-09 00:00:00 +0000 UTC'>June 9, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Lilian Weng</footer>
-  <a class="entry-link" aria-label="post link to 【Translate】General Visual Language Model" href="https://subfish-zhou.github.io/posts/generalized_visual_lm/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Automatic formalization of mathematics: a path to automatic reasoning
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>new subject</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-03-20 00:00:00 +0000 UTC'>March 20, 2022</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Subfish</footer>
-  <a class="entry-link" aria-label="post link to Automatic formalization of mathematics: a path to automatic reasoning" href="https://subfish-zhou.github.io/posts/autoformalization/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Introduction of Deep Learning for Automatic Theorem Proving
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>DL4ATP</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-03-20 00:00:00 +0000 UTC'>March 20, 2022</span>&nbsp;·&nbsp;31 min&nbsp;·&nbsp;Subfish</footer>
-  <a class="entry-link" aria-label="post link to Introduction of Deep Learning for Automatic Theorem Proving" href="https://subfish-zhou.github.io/posts/dlatp/"></a>
-</article>
-    </main>
-    <script type="text/javascript"
-        async
-        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  // Clock
+  function tick() {
+    clock.textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
   }
-});
+  setInterval(tick, 1000); tick();
 
-MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
+  // Theme
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  $('theme-toggle').onclick = () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'light' ? 'dark' : 'light';
+    if (next === 'dark') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
+  // Terminal helpers
+  function addLine(html, cls) {
+    const d = document.createElement('div');
+    d.className = 'terminal-line' + (cls ? ' ' + cls : '');
+    d.innerHTML = html;
+    output.appendChild(d);
+    return d;
+  }
+
+  function scrollTerm() { termBody.scrollTop = termBody.scrollHeight; }
+
+  async function typeLine(text, delay) {
+    delay = delay || 18;
+    const d = document.createElement('div');
+    d.className = 'terminal-line';
+    output.appendChild(d);
+    for (let i = 0; i < text.length; i++) {
+      d.innerHTML += text[i];
+      if (i % 2 === 0) await new Promise(r => setTimeout(r, delay));
     }
-});
-</script>
+    scrollTerm();
+    return d;
+  }
 
-<style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
-</style>
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://subfish-zhou.github.io/">Subfish&#39;s Blog</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+  // Show content panel
+  function showContent(templateId, path, parent) {
+    const tpl = document.getElementById(templateId);
+    if (!tpl) return;
+    if (parent) navStack.push(parent);
+    else navStack = [];
+    contentView.innerHTML = '';
+    contentView.appendChild(tpl.content.cloneNode(true));
+    // Inject back button if there's a parent
+    if (navStack.length > 0) {
+      const closeBtn = contentView.querySelector('.close-btn');
+      if (closeBtn) {
+        const backBtn = document.createElement('button');
+        backBtn.className = 'back-btn';
+        backBtn.innerHTML = '← back';
+        backBtn.onclick = function() { goBack(); };
+        closeBtn.insertBefore(backBtn, closeBtn.firstChild.nextSibling);
+      }
+    }
+    contentView.style.display = 'block';
+    contentEmpty.style.display = 'none';
+    contentView.parentElement.scrollTop = 0;
+    // Re-trigger animation
+    contentView.style.animation = 'none';
+    contentView.offsetHeight; // reflow
+    contentView.style.animation = '';
+    // Update path
+    currentPath = path || '~/';
+    topPath.textContent = currentPath;
+  }
 
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+  // Go back to parent view
+  window.goBack = function() {
+    if (navStack.length > 0) {
+      const parent = navStack.pop();
+      navStack = []; // reset stack when going back
+      showContent(parent.tpl, parent.path);
+      addLine('<span class="t-output">[← back]</span>');
+      scrollTerm();
+    }
+  };
+
+  // Close panel (global for onclick)
+  window.closePanel = function() {
+    contentView.style.display = 'none';
+    contentEmpty.style.display = 'flex';
+    currentPath = '~/';
+    topPath.textContent = currentPath;
+    addLine('<span class="t-prompt">visitor@ziyu:~$</span> <span class="t-output">[panel closed]</span>');
+    scrollTerm();
+    cmdInput.focus();
+  };
+
+  // Run a command (global for onclick from blog list)
+  window.runCommand = function(cmd) {
+    handleCommand(cmd);
+    cmdInput.focus();
+  };
+
+  // Nav map
+  const sections = {
+    'about':          { tpl: 'tpl-about', path: '~/about/' },
+    'research':       { tpl: 'tpl-research', path: '~/research/' },
+    'publications':   { tpl: 'tpl-publications', path: '~/publications/' },
+    'projects':       { tpl: 'tpl-projects', path: '~/projects/' },
+    'blog':           { tpl: 'tpl-blog', path: '~/blog/' },
+  };
+
+  // Aliases (not shown in ls/help but work as commands)
+  const aliases = { 'pub': 'publications' };
+
+  const blogPosts = {};
+
+  function handleCommand(raw) {
+    const cmd = raw.trim();
+    if (!cmd) return;
+
+    commandHistory.push(cmd);
+    historyIdx = commandHistory.length;
+
+    addLine(`<span class="t-prompt">visitor@ziyu:~$</span> ${escHtml(cmd)}`);
+
+    const lower = cmd.toLowerCase().replace(/\s+/g, ' ').trim();
+
+    // help
+    if (lower === 'help') {
+      addLine('');
+      addLine('<span class="t-highlight">Available commands:</span>');
+      addLine('');
+      addLine('  whoami            About me');
+      addLine('  ls                List sections');
+      addLine('  about             Open About page');
+      addLine('  research          Open Research page');
+      addLine('  publications      Open Publications');
+      addLine('  projects          Open Projects');
+      addLine('  blog              Open Blog index');
+      addLine('  cat blog/&lt;slug&gt;   Read a blog post');
+      addLine('  cd &lt;section&gt;      Navigate to section');
+      addLine('  contact           Show contact info');
+      addLine('  clear             Clear terminal');
+      addLine('  close             Close content panel');
+      addLine('  help              Show this help');
+      addLine('');
+      scrollTerm(); return;
+    }
+
+    // whoami
+    if (lower === 'whoami') {
+      addLine('');
+      addLine('<span class="t-highlight" style="font-size:1.05em; font-weight:bold;">周子喻 (Ziyu Zhou)</span>');
+      addLine('<span class="t-output">Research Intern @ Microsoft Research Asia</span>');
+      addLine('<span class="t-output" style="color:var(--text-muted);">AI for Mathematics · Formal Reasoning · Theorem Proving</span>');
+      addLine('');
+      scrollTerm(); return;
+    }
+
+    // contact
+    if (lower === 'contact' || lower === 'cat contact.txt') {
+      addLine('');
+      addLine('📧 Email:   <a class="t-link" href="mailto:subfishzhou@gmail.com">subfishzhou@gmail.com</a>');
+      addLine('🐙 GitHub:  <a class="t-link" href="https://github.com/subfish-zhou" target="_blank">github.com/subfish-zhou</a>');
+      addLine('🎓 Scholar: <a class="t-link" href="https://scholar.google.com/citations?hl=en&user=agJq144AAAAJ" target="_blank">Google Scholar</a>');
+      addLine('📝 Zhihu:   <a class="t-link" href="https://zhihu.com/people/6.626E-34" target="_blank">zhihu.com/people/6.626E-34</a>');
+      addLine('');
+      scrollTerm(); return;
+    }
+
+    // ls
+    if (lower === 'ls' || lower === 'ls ~/' || lower === 'ls ~') {
+      addLine('');
+      const dirs = Object.keys(sections);
+      const line = dirs.map(d => `<span class="t-dir" onclick="runCommand('${d}')">${d}/</span>`).join('  ');
+      addLine(line);
+      addLine('');
+      scrollTerm(); return;
+    }
+
+    // ls blog
+    if (lower === 'ls blog' || lower === 'ls blog/' || lower === 'ls ~/blog' || lower === 'ls ~/blog/') {
+      addLine('');
+      Object.keys(blogPosts).forEach(slug => {
+        addLine(`  <span class="t-dir" onclick="runCommand('cat blog/${slug}')">${slug}.md</span>`);
+      });
+      addLine('');
+      scrollTerm(); return;
+    }
+
+    // clear
+    if (lower === 'clear') {
+      output.innerHTML = '';
+      scrollTerm(); return;
+    }
+
+    // close
+    if (lower === 'close' || lower === 'q' || lower === 'exit') {
+      closePanel();
+      return;
+    }
+
+    // cd <section>
+    if (lower.startsWith('cd ')) {
+      const target = lower.slice(3).replace(/[~\/]/g, '').trim();
+      if (sections[target]) {
+        addLine(`<span class="t-output">→ Opening ${target}/</span>`);
+        showContent(sections[target].tpl, sections[target].path);
+        scrollTerm(); return;
+      }
+      if (target === 'blog/' || target === 'blog') {
+        addLine(`<span class="t-output">→ Opening blog/</span>`);
+        showContent('tpl-blog', '~/blog/');
+        scrollTerm(); return;
+      }
+      addLine(`<span class="t-error">bash: cd: ${target}: No such directory</span>`);
+      scrollTerm(); return;
+    }
+
+    // cat blog/<slug>
+    if (lower.startsWith('cat blog/') || lower.startsWith('cat ~/blog/')) {
+      const slug = lower.replace('cat ~/blog/', '').replace('cat blog/', '').replace('.md', '').trim();
+      if (blogPosts[slug]) {
+        addLine(`<span class="t-output">→ Reading blog/${slug}.md</span>`);
+        showContent(blogPosts[slug].tpl, blogPosts[slug].path, { tpl: 'tpl-blog', path: '~/blog/' });
+        scrollTerm(); return;
+      }
+      addLine(`<span class="t-error">cat: blog/${slug}.md: No such file</span>`);
+      addLine('<span class="t-output">Try: ls blog/</span>');
+      scrollTerm(); return;
+    }
+
+    // Direct section names (including aliases)
+    const resolvedSection = aliases[lower] || lower;
+    if (sections[resolvedSection]) {
+      addLine(`<span class="t-output">→ Opening ${resolvedSection}/</span>`);
+      showContent(sections[resolvedSection].tpl, sections[resolvedSection].path);
+      scrollTerm(); return;
+    }
+
+    // cat about.md
+    if (lower === 'cat about.md' || lower === 'cat ~/about/readme.md') {
+      addLine(`<span class="t-output">→ Opening about/</span>`);
+      showContent('tpl-about', '~/about/');
+      scrollTerm(); return;
+    }
+
+    // Unknown
+    addLine(`<span class="t-error">Command not found: ${escHtml(cmd)}</span>`);
+    addLine('<span class="t-output">Type <span class="t-highlight">help</span> for available commands.</span>');
+    scrollTerm();
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function commonPrefix(arr) {
+    if (!arr.length) return '';
+    let p = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      while (arr[i].indexOf(p) !== 0) p = p.slice(0, -1);
+    }
+    return p;
+  }
+
+  // Input handling
+  cmdInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      handleCommand(cmdInput.value);
+      cmdInput.value = '';
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyIdx > 0) { historyIdx--; cmdInput.value = commandHistory[historyIdx]; }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIdx < commandHistory.length - 1) { historyIdx++; cmdInput.value = commandHistory[historyIdx]; }
+      else { historyIdx = commandHistory.length; cmdInput.value = ''; }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const val = cmdInput.value;
+      const lower = val.toLowerCase();
+
+      // Build completion candidates based on context
+      let candidates = [];
+      let prefix = lower;
+
+      if (lower.startsWith('cat blog/') || lower.startsWith('cat blog\\')) {
+        // Complete blog post slugs
+        const partial = lower.replace('cat blog/', '').replace('cat blog\\', '');
+        candidates = Object.keys(blogPosts).filter(s => s.startsWith(partial));
+        if (candidates.length === 1) {
+          cmdInput.value = 'cat blog/' + candidates[0];
+          return;
+        } else if (candidates.length > 1) {
+          // Find common prefix
+          const common = commonPrefix(candidates);
+          if (common.length > partial.length) {
+            cmdInput.value = 'cat blog/' + common;
+          } else {
+            addLine(`<span class="t-prompt">visitor@ziyu:~$</span> ${escHtml(val)}`);
+            addLine('<span class="t-output">' + candidates.map(c => c + '.md').join('  ') + '</span>');
+            scrollTerm();
+          }
+          return;
         }
+      } else if (lower.startsWith('cd ')) {
+        const partial = lower.slice(3).replace(/[~\/]/g, '');
+        candidates = Object.keys(sections).filter(s => s.startsWith(partial));
+        if (candidates.length === 1) { cmdInput.value = 'cd ' + candidates[0]; return; }
+        if (candidates.length > 1) {
+          const common = commonPrefix(candidates);
+          if (common.length > partial.length) { cmdInput.value = 'cd ' + common; }
+          else {
+            addLine(`<span class="t-prompt">visitor@ziyu:~$</span> ${escHtml(val)}`);
+            addLine('<span class="t-output">' + candidates.join('  ') + '</span>');
+            scrollTerm();
+          }
+          return;
+        }
+      } else {
+        // Top-level command completion
+        const cmds = [...Object.keys(sections), 'help', 'whoami', 'contact', 'clear', 'close', 'ls', 'ls blog', 'cat blog/'];
+        candidates = cmds.filter(c => c.startsWith(lower));
+        if (candidates.length === 1) { cmdInput.value = candidates[0]; return; }
+        if (candidates.length > 1) {
+          const common = commonPrefix(candidates);
+          if (common.length > lower.length) { cmdInput.value = common; }
+          else {
+            addLine(`<span class="t-prompt">visitor@ziyu:~$</span> ${escHtml(val)}`);
+            addLine('<span class="t-output">' + candidates.join('  ') + '</span>');
+            scrollTerm();
+          }
+          return;
+        }
+      }
     }
+  });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
+  // Click terminal to focus input
+  $('terminal-panel').addEventListener('click', e => {
+    if (e.target.tagName !== 'A' && !e.target.classList.contains('t-dir')) cmdInput.focus();
+  });
+
+  // Mobile toggle
+  document.querySelectorAll('.mobile-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mobile-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = btn.dataset.panel;
+      $('terminal-panel').style.display = panel === 'terminal' ? 'flex' : 'none';
+      $('content-panel').style.display = panel === 'content' ? 'block' : 'none';
+      if (panel === 'terminal') cmdInput.focus();
     });
+  });
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+  // ===== Boot sequence =====
+  async function boot() {
+    await new Promise(r => setTimeout(r, 300));
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+    addLine('<span class="t-prompt">visitor@ziyu:~$</span> whoami');
+    await new Promise(r => setTimeout(r, 400));
 
-</script>
-</body>
+    addLine('');
+    addLine('<span class="t-highlight" style="font-size:1.05em; font-weight:bold;">周子喻 (Ziyu Zhou)</span>');
+    addLine('<span class="t-output">Research Intern @ Microsoft Research Asia</span>');
+    addLine('<span class="t-output" style="color:var(--text-muted);">AI for Mathematics · Formal Reasoning · Theorem Proving</span>');
+    addLine('');
+    await new Promise(r => setTimeout(r, 500));
 
-</html>
+    addLine('<span class="t-prompt">visitor@ziyu:~$</span> cat contact.txt');
+    await new Promise(r => setTimeout(r, 300));
+
+    addLine('');
+    addLine('📧 Email:   <a class="t-link" href="mailto:subfishzhou@gmail.com">subfishzhou@gmail.com</a>');
+    addLine('🐙 GitHub:  <a class="t-link" href="https://github.com/subfish-zhou" target="_blank">github.com/subfish-zhou</a>');
+    addLine('🎓 Scholar: <a class="t-link" href="https://scholar.google.com/citations?hl=en&user=agJq144AAAAJ" target="_blank">Google Scholar</a>');
+    addLine('📝 Zhihu:   <a class="t-link" href="https://zhihu.com/people/6.626E-34" target="_blank">zhihu.com/people/6.626E-34</a>');
+    addLine('');
+    await new Promise(r => setTimeout(r, 500));
+
+    addLine('<span class="t-prompt">visitor@ziyu:~$</span> ls ~/');
+    await new Promise(r => setTimeout(r, 300));
+
+    addLine('');
+    const dirs = Object.keys(sections);
+    addLine(dirs.map(d => `<span class="t-dir" onclick="runCommand('${d}')">${d}/</span>`).join('  '));
+    addLine('');
+    addLine('<span style="color:var(--text-muted);">Type <span class="t-highlight">help</span> for commands, or click a directory.</span>');
+    addLine('');
+
+    inputLine.style.display = 'flex';
+    cmdInput.focus();
+    scrollTerm();
+  }
+
+  boot();
+})();
+</script> </body> </html>
